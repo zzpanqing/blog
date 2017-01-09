@@ -1,17 +1,17 @@
 # Faire fonctionner Android Studio > Hierarchy Viewer sur le device Honor 5C
 # Hierarchy Viewer
-Hierarchy viewer permet de voir la hiérarchie view en arbre, cela donne une impression directe de la profondeur et le nombre de view de votre activity en cours. Pour une raison de performance, pour chaque activity, il est conseillé de limiter la profondeur à 10, et le nombre totale de view à 80. [ref](https://classroom.udacity.com/courses/ud853/lessons/1623168625/concepts/16677585990923#)
+Hierarchy viewer permet de voir la hiérarchie view en arbre, cela donne une vision directe de la profondeur et le nombre de view de l'activity actuellement affiché sur votre device. Pour une raison de performance, chaque activity ne doit par avoir une hiérarchie dont la profondeur plus que 10 et le nombre totale de view plus que 80. [ref](https://classroom.udacity.com/courses/ud853/lessons/1623168625/concepts/16677585990923#)
 
 ## [Configuration Device](https://developer.android.com/studio/profile/hierarchy-viewer-setup.html) 
-L'OS android installé sur mon Honor 5C est Android 6.0, pour que Hierarchy Viewer fonctionne sur cette device, il me faut
+L'OS android installé sur Honor 5C est Android 6.0, pour que Hierarchy Viewer fonctionne sur cette device, il faut:
 
-### Sur votre device Honor 5C
+### Sur le device Honor 5C
 1. Activer Developer Options
 2. Bootloader unlock (pour comment, voir plus bas)
 
-### Sur votre machine de développement 
+### Sur la machine de développement 
 configure  ANDROID_HVPROTO variable
-Sur mon mac, 
+Sur le mac, 
 
 1. Edit ~/.bash_profile
 2. Add: 
@@ -22,14 +22,14 @@ Sur mon mac,
 
 Une explication complete se trouve [ici](https://developer.android.com/studio/profile/hierarchy-viewer-setup.html#hvproto-variable)
 
-Maintenant, si votre Honor 5C est configurer comme nécessaire, vous lancer Hierarchy Viewer à partir d'Android Studio (menu Tools -> Android -> Android Device Monitor, puis dans Android Device Monitor, menu Window -> Open perspectives... -> Hierarchy Viewer), vous devez voir l'arbre représentant la hiérarchie de l'activity actuel du votre device.
+Maintenant, votre Honor 5C est configuré comme nécessaire, vous lancez Hierarchy Viewer à partir d'Android Studio (menu Tools -> Android -> Android Device Monitor, puis dans Android Device Monitor, menu Window -> Open perspectives... -> Hierarchy Viewer), vous devez voir l'arbre représentant la hiérarchie de l'activity actuellement affiché sur votre device.
 
 ## Bootloader unlock Honor 5C
 
 ### Les étapes en général
 Pour bootloader unlocker un device Android quelconque, il est nécessaire d'effectuer les lignes de commande suivantes
-    $ adb reboot bootloader
-    $ fastboot oem unlock [code obtenu du site https://www.emui.com ]
+    *$ adb reboot bootloader
+    *$ fastboot oem unlock [code obtenu du site https://www.emui.com ]
 
 ### Spécifique Honor 5C
 Pour obtenir le code fournir par Huawai, il suffit de suivre les étapes suivante:
@@ -45,11 +45,11 @@ Pour obtenir le code fournir par Huawai, il suffit de suivre les étapes suivant
      * serial number (Settings -> About -> Status)
      * phone IMEI1 (Settings -> About -> Status)
      * phone product ID (ouvrir le dialler and enter *#*#1357946#*#*)
-     * un code reçu par mail de votre compte Huawei
+     * un code reçu par mail de votre compte Huawei, code à entrer à la commande $ fastboot oem unlock
 
     L'explication complete se trouve [ici](http://www.modaco.com/forums/topic/377348-how-to-bootloader-unlock-your-honor-5c-official-and-unofficial-methods/)
     
-3. Effectuer les lignes de commande expliqué dans [Les étapes en géneral]
+3. Effectuer les lignes de commande expliqué dans [Les étapes en géneral] avec le code que vous avez obtenu par mail
 
 
 
