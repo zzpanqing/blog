@@ -1,4 +1,4 @@
-# Faire fonctionner Android Studio > Hierarchy Viewer sur le device Honor 5C
+# Faire fonctionner Hierarchy Viewer sur le device Honor 5C
 # Hierarchy Viewer
 Hierarchy viewer permet de voir la hiérarchie view en arbre, cela donne une vision directe de la profondeur et le nombre de view de l'activity actuellement affiché sur votre device. Pour une raison de performance, chaque activity ne doit par avoir une hiérarchie dont la profondeur plus que 10 et le nombre totale de view plus que 80. [ref](https://classroom.udacity.com/courses/ud853/lessons/1623168625/concepts/16677585990923#)
 
