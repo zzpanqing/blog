@@ -6,7 +6,7 @@ Solution : using ssh.  Steps：
 * Create your ssh keys 
 
               $ cd ~/.ssh
-       ~/.ssh $ ssh-keygen -t rsa -C "your_mail_adress_used_github@xxx.com"
+              $ ssh-keygen -t rsa -C "your_mail_adress_used_github@xxx.com"
 
 The public key in file named id_rsa.pub and the private key in file named id_rsa
 
@@ -16,15 +16,15 @@ The public key in file named id_rsa.pub and the private key in file named id_rsa
 
 * Test on your computer
 
-      ~/.ssh $ ssh -T git@github.com 
+             $ ssh -T git@github.com 
 
 * return to your repository on your github page, make the repository use ssh url: 
 ![repository_url_http_ssh] (../images/github_repository_use_ssh.png)
 Click on "use ssh", then copy the url in ssh formate, paste into your local repository's git configuration file on your computer
 
 * open your local_repository/.git/config,  
-[remote "origin"]
-	url = git@github.com:zzpanqing/zzpanqing.github.io.git // url copied from github
+   [remote "origin"]
+    	url = git@github.com:zzpanqing/zzpanqing.github.io.git // url copied from github
  
 
 
