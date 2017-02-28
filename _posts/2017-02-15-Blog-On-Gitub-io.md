@@ -20,7 +20,52 @@ github 上出品了 github pages 这个东东，写博可用的。需进行一�
 Jekyll创始人的[示例库](https://github.com/mojombo/tpw)
 
 #Jekyll 介绍
-Jekyll 可以在指定文件加中，生成网站所需要的 source 文件：
+* Jekyll 可以在指定文件夹中，生成网站所需要的 source 文件：
+   
+    $ jekyll new blogs/folder/path
+在 blogs/folder/path 这个目录文件夹下，Jekyll 生成了以下文件目录
+.
+├── about.md
+├── _config.yml
+├── Gemfile
+├── Gemfile.lock
+├── index.md
+└── _posts
+    └── 2017-02-28-welcome-to-jekyll.markdown
+
+* 生成网页文件夹 _site
+
+    $ jekyll build 
+文件目录树变成这样
+.
+├── about.md
+├── _config.yml
+├── Gemfile
+├── Gemfile.lock
+├── index.md
+├── _posts
+│   └── 2017-02-28-welcome-to-jekyll.markdown
+└── _site
+    ├── about
+    │   └── index.html
+    ├── assets
+    │   └── main.css
+    ├── feed.xml
+    ├── index.html
+    └── jekyll
+        └── update
+            └── 2017
+                └── 02
+                    └── 28
+                        └── welcome-to-jekyll.html
+
+
+
+* 运行网站
+  
+    $ jekyll serve
+打开浏览器，输入 local:4000,http://127.0.0.1:4000/ 即见网页。
+
 
 #名词
 * _config.xml  配置文件， 调用jekyll命令的时候会自动用_config.xml里面的配置。
