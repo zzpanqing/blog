@@ -11,15 +11,15 @@ Solution : using ssh.  Steps：
 The public key in file named id_rsa.pub and the private key in file named id_rsa
 
 * Add the public key into your github account: copy the content of the file id_rsa.pub, open your github page > account > settings > SSH and GPG keys > New SSH keys, then paste.
-![account](../images/github_account_setting.png)
-![setting](../images/github_account_setting_SSH.png)
+![account]({{ site.url }}/images/github_account_setting.png)
+![setting]({{ site.url }}/images/github_account_setting_SSH.png)
 
 * Test on your computer
 
              $ ssh -T git@github.com 
 
 * return to your repository on your github page, make the repository use ssh url: 
-![repository_url_http_ssh] (../images/github_repository_use_ssh.png)
+![repository_url_http_ssh] ({{ site.url }}/images/github_repository_use_ssh.png)
 Click on "use ssh", then copy the url in ssh formate, paste into your local repository's git configuration file on your computer
 
 * open your local_repository/.git/config,  
