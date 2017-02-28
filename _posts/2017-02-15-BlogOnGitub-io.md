@@ -12,5 +12,7 @@ github 上出品了 github pages 这个东东，写博可用的。需进行一�
 参考别人的 [blog](https://github.com/mmistakes/hpstr-jekyll-theme)
 
 [Github Pages极简教程](http://yanping.me/cn/blog/2012/03/18/github-pages-step-by-step/)
+
 [搭建一个免费的，无限流量的Blog----github Pages和Jekyll入门](http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html)
+
 [Quick Markdown Example](http://www.unexpected-vortices.com/sw/rippledoc/quick-markdown-example.html)
