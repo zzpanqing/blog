@@ -18,3 +18,9 @@ github 上出品了 github pages 这个东东，写博可用的。需进行一�
 [Quick Markdown Example](http://www.unexpected-vortices.com/sw/rippledoc/quick-markdown-example.html)
 
 Jekyll创始人的[示例库](https://github.com/mojombo/tpw)
+
+#Jekyll 介绍
+Jekyll 可以在指定文件加中，生成网站所需要的 source 文件：
+
+#名词
+* _config.xml  配置文件， 调用jekyll命令的时候会自动用_config.xml里面的配置。
