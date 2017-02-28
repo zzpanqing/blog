@@ -24,8 +24,8 @@ Click on "use ssh", then copy the url in ssh formate, paste into your local repo
 
 * open your local_repository/.git/config,  
    
-      [remote "origin"] 	   
-         url = git@github.com:zzpanqing/zzpanqing.github.io.git // url copied from github
+    [remote "origin"] 	   
+       url = git@github.com:zzpanqing/zzpanqing.github.io.git // url copied from github
  
 
 
