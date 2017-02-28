@@ -23,8 +23,9 @@ The public key in file named id_rsa.pub and the private key in file named id_rsa
 Click on "use ssh", then copy the url in ssh formate, paste into your local repository's git configuration file on your computer
 
 * open your local_repository/.git/config,  
-   [remote "origin"]
-    	url = git@github.com:zzpanqing/zzpanqing.github.io.git // url copied from github
+   
+      [remote "origin"] 	   
+         url = git@github.com:zzpanqing/zzpanqing.github.io.git // url copied from github
  
 
 
