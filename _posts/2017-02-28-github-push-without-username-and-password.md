@@ -11,7 +11,7 @@ Solution : using ssh.  Steps：
 The public key in file named id_rsa.pub and the private key in file named id_rsa
 
 * Add the public key into your github account: copy the content of the file id_rsa.pub, open your github page > account > settings > SSH and GPG keys > New SSH keys, then paste.
-![account]({{ site.url }}/images/github_account_setting.png  =250x)
+![account]({{ site.url }}/images/github_account_setting.png  =250x400)
 ![setting]({{ site.url }}/images/github_account_setting_SSH.png  =250x)
 
 * Test on your computer
