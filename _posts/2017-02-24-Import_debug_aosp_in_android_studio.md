@@ -131,13 +131,11 @@ we get
 
 Now we find the JDK home Path is /usr/lib/jvm/java-8-openjdk-amd64.
 
-![Project Structure]({{site.url}}/images/Import_debug_aosp_in_android_studio/AS_ProjectStructure)
-
-![account]({{ site.url }}/images/github_account_setting.png){:height="480px"}
+![Project Structure]({{site.url}}/images/Import_debug_aosp_in_android_studio/AS_ProjectStructure){:height="480px"}
 
 Set the new created SDK as the project SDK
 
-![Project SDK]({{site.url}}/images/Import_debug_aosp_in_android_studio/Project%20Structure_Project_SDK.png)
+![Project SDK]({{site.url}}/images/Import_debug_aosp_in_android_studio/Project%20Structure_Project_SDK.png){:height="480px"}
 
 Verify the module SDK is one of the Android API, delete all dependencies except
 * Module Source
@@ -147,7 +145,7 @@ Add 2 directory as dependencies
 * external
 the adding order should be respected.
 
-![Module SDK]({{site.url}}/images/Import_debug_aosp_in_android_studio/Project%20Structure_module_sdk.png)
+![Module SDK]({{site.url}}/images/Import_debug_aosp_in_android_studio/Project%20Structure_module_sdk.png){:height="480px"}
 
 
 We've done! Now we can launch emulator from android Studio, and add a break point in the source, for example in XXX/packages/apps/Settings/src/com/android/settings/SettingsActivity.java -> onCreate, when you launch the System Setting app on the emulator, the execution will stop at the breakpoint.
