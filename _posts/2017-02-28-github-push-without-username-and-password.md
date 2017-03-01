@@ -22,7 +22,7 @@ The public key in file named id_rsa.pub and the private key in file named id_rsa
 
 * return to your repository on your github page, make the repository use ssh url: 
 
-![repository_url_http_ssh]({{ site.url }}/images/github_repository_use_ssh.png){:height="280px"}
+![repository_url_http_ssh]({{ site.url }}/images/github_repository_use_ssh.png){:height="480px"}
 
 Click on "use ssh", then copy the url in ssh formate, paste into your local repository's git configuration file on your computer
 
