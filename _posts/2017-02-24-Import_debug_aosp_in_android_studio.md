@@ -132,9 +132,11 @@ we get
 Now we find the JDK home Path is /usr/lib/jvm/java-8-openjdk-amd64.
 
 ![Project Structure]({{site.url}}/images/Import_debug_aosp_in_android_studio/AS_ProjectStructure)
+
 ![account]({{ site.url }}/images/github_account_setting.png){:height="480px"}
 
 Set the new created SDK as the project SDK
+
 ![Project SDK]({{site.url}}/images/Import_debug_aosp_in_android_studio/Project%20Structure_Project_SDK.png)
 
 Verify the module SDK is one of the Android API, delete all dependencies except
