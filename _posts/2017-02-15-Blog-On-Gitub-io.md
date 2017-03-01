@@ -69,3 +69,7 @@ Jekyll创始人的[示例库](https://github.com/mojombo/tpw)
 
 #名词
 * _config.xml  配置文件， 调用jekyll命令的时候会自动用_config.xml里面的配置。
+
+#注意
+image 的 url，需要加上 {{site.url}}, 比如，你的图片放在根目录/images 文件夹下，你引用 image 的 url 应该是这样的
+![account]({{ site.url }}/images/github_account_setting.png){:height="480px"}
