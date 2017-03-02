@@ -1,0 +1,4 @@
+sudo apt-get install qt-sdk 命令安装的是 qt4, 要想安装 qt5,就得自己动手。
+
+步骤
+* 从 
