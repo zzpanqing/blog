@@ -33,8 +33,11 @@ Maintenant, votre Honor 5C est configuré comme nécessaire, vous lancez Hierarc
 
 ### Les étapes en général
 Pour bootloader unlocker un device Android quelconque, il est nécessaire d'effectuer les lignes de commande suivantes
+    
+    '''
     *$ adb reboot bootloader
     *$ fastboot oem unlock [code obtenu du site https://www.emui.com ]
+    '''
 
 ### Spécifique Honor 5C
 Pour obtenir le code fournir par Huawai, il suffit de suivre les étapes suivante:
