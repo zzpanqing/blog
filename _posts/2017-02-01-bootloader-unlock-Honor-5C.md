@@ -53,7 +53,9 @@ Pour obtenir le code fournir par Huawai, il suffit de suivre les étapes suivant
      * serial number (Settings -> About -> Status)
      * phone IMEI1 (Settings -> About -> Status)
      * phone product ID (ouvrir le dialler and enter *#*#1357946#*#*)
-     * un code reçu par mail de votre compte Huawei, code à entrer à la commande $ fastboot oem unlock
+     * un code reçu par mail de votre compte Huawei, code à entrer à la commande 
+       
+            $ fastboot oem unlock
 
     L'explication complete se trouve [ici](http://www.modaco.com/forums/topic/377348-how-to-bootloader-unlock-your-honor-5c-official-and-unofficial-methods/)
     
