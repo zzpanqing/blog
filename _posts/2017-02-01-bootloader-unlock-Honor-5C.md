@@ -36,7 +36,7 @@ Pour bootloader unlocker un device Android quelconque, il est nécessaire d'effe
     
     
     $ adb reboot bootloader
-    $ fastboot oem unlock [code obtenu du site https://www.emui.com ]
+    $ sudo fastboot oem unlock [code obtenu du site https://www.emui.com ]
     
 
 ### Spécifique Honor 5C
