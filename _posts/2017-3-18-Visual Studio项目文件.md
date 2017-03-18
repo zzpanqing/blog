@@ -40,7 +40,6 @@
     * project 的名字  "{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EOSExamWorkflow-Cpp"
     * project文件，它是对于 .sln 文件的相对路径 "EOSExamWorkflow\EOSExamWorkflow-Cpp\EOSExamWorkflow-Cpp.vcxproj"
     * project的GUID，.sln 通过这个GUID识别工程。在后面的依靠关系和编译配置中都会用到。 "{47594617-BB28-4211-B191-791D64BB2BAA}"
-    
     * Project 的 dependencies 定义在  ProjectSection(ProjectDependencies) 小节中，列出 dependencies 的 GUID
  
 * Global 全局设置, 比较有用的是:
