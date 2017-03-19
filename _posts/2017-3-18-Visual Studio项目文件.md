@@ -50,4 +50,7 @@
     
     * SolutionProperties
     
-    标记为 preSolution 的部分，系统在读取 solution 之前读取，标记为 postSolution 的部分，系统在读取 solution 之后读取，
+    标记为 preSolution 的部分，系统在读取 solution 之前读取，标记为 postSolution 的部分，系统在读取 solution 之后读取.
+    
+## .suo 文件 ##
+解决方案用户选项，放用户设置。
