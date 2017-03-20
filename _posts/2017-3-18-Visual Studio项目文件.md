@@ -180,3 +180,5 @@ Project 中包含的 items (source files, etc), 每个 item type 一套.
       <ImportGroup Label=“ExtensionTargets“ />
 
  This group contains imports for the Build Customization target files.
+ 
+ 如果 .vcxproj 文件中没有 PropertySheets import group, Property Manager 中就不会有 user property sheets 显示.
