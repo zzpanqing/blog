@@ -77,5 +77,71 @@ deleter 可以是函数对象，也可以是 lambda
       pInv.reset(new Stock(std::forward<Ts>(params)...));
   试图将原生指针（例如new出来的指针）赋值给std::unique_ptr是不会通过编译的，因为这导致一个从原生指针到智能指针的隐式转换，这样的隐式转换是有问题的，所以C++11的智能指针禁止这样的转换。
   
-* 
-  
+* 对于每个new，我们都用std::forward来完美转发makeInvestment的参数。这样的话，创建对象的构造函数能得到调用者提供的所有的信息。
+    
+      std::unique_ptr<Investment, decltype(delInvmt)>   // 修改返回类型
+      makeInvestment(Ts&&... params)
+      {`
+          std::unique_ptr<Investment, decltypedelInvmt)>
+             pInv(nullptr, delInvmt);                   // 将要返回的指针
+          if ( /* a Stock object should be created */ )
+          {
+              pInv.reset(new Stock(std::forward<Ts>(params)...)); // forward makeInvestment 的参数
+          }
+          ...
+          return pInv;
+      }
+
+* 自定义删除器的参数类型是Investment *。不管makeInvestment函数实际创建的对象是什么类型（例如，Stock，Bond，RealEstate）,它最终都会在lambda表达式里作为一个Investment *对象被删除。这意味着我们可以通过基类指针删除派生类对象。为了实现这项工作，基类——Investment——必须要有一个虚析构函数：
+
+       class Investment {
+       public:
+           ...
+           virtual ~Investment();`  // 设计的基本组成成分
+           ...
+       };
+       
+* makeInvestment 的返回类型可以写成 auto, 这样更简单和更具有封装性。
+    
+      template <typename... Ts>
+      auto makeInvestment(Ts&&... params)   // C++14
+      {
+         auto delInvmt = [](Investment* pInvestment) // 自定义删除器
+                         {                                                // 内置于makeInvestment
+                             makeLogEntry(pInvestment);
+                             delete pInvestment;
+                         };
+
+          std::unique_ptr<Investment, decltype(delInvmt)> 
+            pInv(nullptr, delInvmt); 
+                                                  `
+          if (...)
+          {
+              pInv.reset(new Stock(std::forward<Ts>(params)...));
+          }
+         ...
+          return pInv;
+      }
+
+* 当你使用默认删除器时（即delete），你有理由假定std::unique_ptr对象的大小和原生指针一样。
+* 如果删除器是函数指针，它通常会让std::unique_ptr的大小增加一到两个字(word)。如果删除器是函数对象，std::unique_ptr的大小改变取决于函数对象存储了多少状态。这意味着当自定义删除器可以用 函数 或者 不捕获变量的lambda表达式实现时，lambda实现会更好：  
+
+      auto delInvmt1 = [](Investment* pInvestment)           // 自定义删除器是
+                 {     // 不捕获变量的
+                     makeLogEntry(pInvestment);      // lambda表达式
+                     delete pInvestment;
+                 };
+
+      template <typename... Ts>
+      std::unique_ptr<Investment, decltype(delInvmt11)>   // 返回类型的大小
+      makeInvestment(Ts&&... args);                      // 与Investment*相同
+
+      void delInvmt2(Investment* pInvestment)    // 自定义删除器是函数
+      {
+          makeLogEntry(pInvestment);
+          delete pInvestment;
+      }
+                                          `
+      template <typename... Ts>                                                 // 返回类型大小为
+      std::unique_ptr<Investment, void (*)(Investment*)>   // Investment* 加上
+      makeInvestment(Ts&&... params);                      //  至少一个函数指针的尺寸
