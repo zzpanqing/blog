@@ -124,7 +124,7 @@ deleter 可以是函数对象，也可以是 lambda
       }
 
 * 当你使用默认删除器时（即delete），你有理由假定std::unique_ptr对象的大小和原生指针一样。
-* 如果删除器是函数指针，它通常会让std::unique_ptr的大小增加一到两个字(word)。如果删除器是函数对象，std::unique_ptr的大小改变取决于函数对象存储了多少状态。这意味着当自定义删除器可以用 函数 或者 不捕获变量的lambda表达式实现时，lambda实现会更好：  
+* 如果删除器是函数指针，它通常会让std::unique_ptr的大小增加一到两个字(word)。如果删除器是函数对象，std::unique_ptr的大小改变取决于函数对象存储了多少状态。这意味着当自定义删除器可以用 函数 或者 不捕获变量的lambda表达式实现时，lambda实现会更好(返回类型的大小与Investment\* 相同), 带有大状态的函数对象会造成很大的std::unique_ptr. 
 
       auto delInvmt1 = [](Investment* pInvestment)           // 自定义删除器是
                  {     // 不捕获变量的
@@ -133,8 +133,8 @@ deleter 可以是函数对象，也可以是 lambda
                  };
 
       template <typename... Ts>
-      std::unique_ptr<Investment, decltype(delInvmt11)>   // 返回类型的大小
-      makeInvestment(Ts&&... args);                      // 与Investment*相同
+      std::unique_ptr<Investment, decltype(delInvmt1)>   // 返回类型的大小
+      makeInvestment(Ts&&... args);                       // 与Investment*相同
 
       void delInvmt2(Investment* pInvestment)    // 自定义删除器是函数
       {
@@ -142,6 +142,27 @@ deleter 可以是函数对象，也可以是 lambda
           delete pInvestment;
       }
                                           `
-      template <typename... Ts>                                                 // 返回类型大小为
+      template <typename... Ts>                            // 返回类型大小为
       std::unique_ptr<Investment, void (*)(Investment*)>   // Investment* 加上
       makeInvestment(Ts&&... params);                      //  至少一个函数指针的尺寸
+
+* std::unique_ptr有两种形式
+
+    单独的对象形式（std::unique_ptr<T>）, 该形式没有下标引用操作（operator[]）
+   
+    数组形式（std::unique_ptr<T[]>）， 改形式没有解引用操作（operator*和operator->）
+    
+* 比起 数组形式（std::unique_ptr<T[]>） , 还是使用 std::array，std::vetcor，std::string     
+
+* 我能想到的（std::unique_ptr<T[]>）唯一有意义场景就是，当你使用C-like风格的API，并且这API返回一个指像数组的指针，数组是从堆分配的，你需要对这个数组负责
+
+* std::unique_ptr 可以简单又高效地转化为std::shared_ptr：
+
+          std::shared_ptr<Investment> sp =    // 把 std::unique_ptr转换为
+              makeInvestment(argument);       // std::shared_ptr
+
+这是为什么std::unique_ptr如此适合做工厂函数的关键原因，工厂函数不会知道：独占所有权语义和共享所有权语义哪个更适合调用者。通过返回一个std::unique_ptr，工厂提供给调用者的是最高效的智能指针，但它不妨碍调用者用std::shared_ptr来替换它
+
+## unique_ptr 用来实现 Pimpl Idiom ##
+
+参见 effective modernc C++ item 22  
