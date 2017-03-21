@@ -163,6 +163,11 @@ deleter 可以是函数对象，也可以是 lambda
 
 这是为什么std::unique_ptr如此适合做工厂函数的关键原因，工厂函数不会知道：独占所有权语义和共享所有权语义哪个更适合调用者。通过返回一个std::unique_ptr，工厂提供给调用者的是最高效的智能指针，但它不妨碍调用者用std::shared_ptr来替换它
 
+### to be remembered ###
+* std::unique_ptr是一个智能，快速，只可移动的智能指针，它以独占所有权语义管理资源。
+* 默认情况下，通过delete来销毁资源，但可以指定自定义删除器。有状态的删除器和函数指针作为std::unique_ptr的删除器会增加std::unique_ptr对象的大小。
+* 将std::unique_ptr转换为std::shared_ptr是容易的。
+
 ## unique_ptr 用来实现 Pimpl Idiom ##
 
 参见 effective modernc C++ item 22  
