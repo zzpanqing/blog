@@ -60,10 +60,22 @@ deleter 可以是函数对象，也可以是 lambda
 对程序的几点说明:
 
 * 调用者使用 auto 存储 makeInvestment 的返回值，完全不用关心资源的释放。
-* delInvmt是从makeInvestment返回对象的自定义删除器.所有的自定义删除函数都是接受一个指向需要销毁的对象的原生指针作为参数. 在这个例子中，删除器的行为是调用makelogEntry，然后应用delete
+
+      auto pInvestment = makeInvestment(*arguments*);
+* delInvmt是从makeInvestment返回对象的自定义删除器.所有的自定义删除函数都是接受一个指向需要销毁的对象的原生指针作为参数. 在这个例子中，删除器的行为是调用makelogEntry，然后应用delete.
 * 我们使用自定义的删除器的时候，它的类型要作为std::unique_ptr的第二个模板参数。这里 deleter 是 delInvmt, 所以模板参数是 decltype(delInvmt).
+   
+      std::unique_ptr<Investment, decltype(delInvmt)>
 * 解释 
 
       std::unique_ptr<Investment, decltypedelInvmt)>  pInv(nullptr, delInvmt);      
 
   makeInvestment的基本策略是先创建一个空的std::unique_ptr，然后指向一个类型合适的对象，然后返回它。为了关联删除器delInvmt和pInvmt，我们把删除器作为第二个构造参数传递给std::unique_ptr。
+  
+* 用 reset 将 new 出来的对象付给 unique_ptr
+
+      pInv.reset(new Stock(std::forward<Ts>(params)...));
+  试图将原生指针（例如new出来的指针）赋值给std::unique_ptr是不会通过编译的，因为这导致一个从原生指针到智能指针的隐式转换，这样的隐式转换是有问题的，所以C++11的智能指针禁止这样的转换。
+  
+* 
+  
