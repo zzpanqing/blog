@@ -20,12 +20,13 @@
 
 工厂函数通常从堆上分配一个对象，然后返回一个指向它的指针，当不再需要它的时候，调用者要负责delete这个对象。那真是完美匹配std::unique_ptr，因为调用者需要为工厂返回的资源负责（即独占资源的所有权），然后std::unique_ptr在它销毁的时候可以自动 delete 它指向的对象。
     
-    {                  
-      ...
-      auto pInvestment =                       // pInvestment的类型是
-            makeInvestment(*arguments*);       // std::unique_ptr<Investment>
-      ...
-    }    // 销毁 *pInvestment
+    
+     {                  
+       ...
+       auto pInvestment =                       // pInvestment的类型是
+             makeInvestment(*arguments*);       // std::unique_ptr<Investment>
+       ...
+     }    // 销毁 *pInvestment
 
 deleter 可以是函数对象，也可以是 lambda
 
