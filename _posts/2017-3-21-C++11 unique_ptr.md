@@ -4,6 +4,8 @@
 
 * unique_ptr member 不用初始化，default constructor 将 unique_ptr 初始化成 vide 的, 但本身不为 null. 
 
+* 总是用 new 出来的指针 初始化 unique_ptr, 不能有 object 来初始化 unique_ptr, 因为一旦除了作用域， object 就消失了。
+
 ## 作为用于工厂函数 factory 的返回类型 ##
 
 [modern effective c++ 中的例子](http://blog.csdn.net/big_yellow_duck/article/details/52317819)
