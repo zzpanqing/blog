@@ -34,3 +34,9 @@ C++11 中，又添加两个新的，编译器可以自动生成的函数 move co
 * move constructor 和 move assignment operator 相互 non independent, 如果你生成了其中一个， compiler 就 move constructor 和 move assignement constructor 都不生成。原因： compiler 生成的默认的 move constructor 和 move assignment operator 试图作 memberwise move.如果你生成了move constructor 或者move assignment operator 就说明你不需要 compiler 提供的memberwise move 这样的行为。    
 
 * 如果你 declare 了 copy operation (copy constructor 和 copy assignment operator), 那么 compiler 也不会生成 move operation(move constructor 和 move assignment operator) 因为：声明 copy operation 说明你不想要默认的 member-wise copy 的 行为，那你也很可能不想要 move memberwise 的 行为 (默认 move operation 的行为)。
+
+* 同样，声明move operation(member wise move 不被需要) 会导致 copy operation 无法被生成( member wise copy 也不需要)。
+
+* Rule of Three
+    
+    * 如果你声明了 copy constructor, copy assignment operator, destructor 中的一个，那么你应该将三个都声明。原因，copy constructor 和 copy assignment operator 应该有一样的 resrouces 管理， destructor 也需要参与 resources 管理 (释放资源)。stl 中涉及内存的类 (stl container) 都声明了 copy constructor, copy assignment operator, destructor.
