@@ -1,5 +1,12 @@
 # 理解特殊成员函数的生成 #
 
+## Things to Remember ##
+
+* 特殊成员函数是编译器可自动生成的函数：默认构造函数(ctor)，析构函数(dtor)，拷贝操作 copy，移动操作 move。
+* 移动操作 move 只有在那些没有显式声明移动操作 move、拷贝操作 copy、析构函数dtor的类中生成。
+* 拷贝构造 copy ctor 只有在那些没有显式声明拷贝构造 copy ctor 的类中生成，如果类中声明了移动操作 move operatoiont 它 copy ctor 就会被删除。拷贝复制操作符 copy assignement operator 只有在那些没有显式声明拷贝操作运算符 copy assignment operator 的类中生成，如果类中声明了移动操作move 它copy assignement operator 会被删除。在显式声明析构函数 dtor 的类中生成拷贝操作copy operation的做法已经过时。
+* 成员函数模板从来不会抑制特殊成员函数的生成。
+
 在C++98，特殊成员函数有四个
 
 * default constructor
@@ -106,3 +113,4 @@ C++11 中，又添加两个新的，编译器可以自动生成的函数 move co
             Widget& operator=(const T& rhs);
             ...`
         };
+ 编译器还是会为Widget生成拷贝构造和拷贝赋值
