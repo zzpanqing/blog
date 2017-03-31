@@ -45,8 +45,10 @@ C++11 中，又添加两个新的，编译器可以自动生成的函数 move co
 * 根据上面的道理，C++11 中，如果声明了 destructor, 则 compiler 不会生成 move operation (move constructor 和 move assignement operator). 
   本来 copy operation 也应该不被生成，但是未兼容 c++98, 所以生成 destructor 不会影响 copy constructor 和 copy assignment operator 的生成。
  
-* 综上所述，只有在下列三个条件都成立时，compiler 才会 生成默认的 copy constructor 和 copy assignment operator:
-      
-     * 类中 没有声明 copy operaion (copy constructor, copy assignment operator)
-     * 类中 没有声明 move operaion (move constructor, move assignment operator )
-     * 类中 没有声明 destructor
+* 综上所述，只有在下列三个条件都成立时，compiler 才会 生成默认的 move constructor 和 move assignment operator:
+
+    * 类中 没有声明 copy operaion (copy constructor, copy assignment operator)
+    * 类中 没有声明 move operaion (move constructor, move assignment operator )
+    * 类中 没有声明 destructor
+    
+* compiler 生成 copy constructor 和 copy assignment operator 也需要上面三个条件
