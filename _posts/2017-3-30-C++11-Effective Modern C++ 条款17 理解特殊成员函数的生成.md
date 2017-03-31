@@ -52,3 +52,33 @@ C++11 中，又添加两个新的，编译器可以自动生成的函数 move co
     * 类中 没有声明 destructor
     
 * compiler 生成 copy constructor 和 copy assignment operator 也需要上面三个条件
+
+* 显示的要求使用默认 constructor 和 copy assignement operator, 使用 = default 就可以
+ 
+         class Widget {
+            public:
+                ...
+                ~Widget();      // 用户声明的析构函数
+                ...
+                Widget(const Widget&) = default;    // 使用默认拷贝构造
+
+                Widget& operator=(const Widget&) = default;  // 使用默认拷贝复制操作
+                ...
+            };
+
+    * = default 用在 destructor 声明 后面，使得 destructor 成为 virutal 的，即使 base class 的 dtor 不是 virtual 的也不影响
+    * = default 用在 copy operation 后面，则该类支持 default copy operation
+    * = default 用在 move operation 后面，则该类支持 default move operation
+    
+            class Base {
+            public:
+                virtual ~Base() = default;   // 虚析构函数
+
+                Base(Base&&) = default;     // 支持移动操作
+                Base& operator(Base&&) = default;
+
+                Base(const Base&) = default;    // 支持拷贝
+                Base& operator(const Base&) = default;
+                ...
+            };
+* 如果一个 class 没有使用 default 来 declare dctr, 该类就不会有 move operation, 所有的 move operation 请求，都用 copy operation 来代替。
