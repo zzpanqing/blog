@@ -48,7 +48,7 @@ C++11 中，又添加两个新的，编译器可以自动生成的函数 move co
 * 综上所述，只有在下列三个条件都成立时，compiler 才会 生成默认的 move constructor 和 move assignment operator:
 
     * 类中 没有声明 copy operaion (copy constructor, copy assignment operator)
-    * 类中 没有声明 move operaion (move constructor, move assignment operator )
+    * 类中 没有声明 move operaion (move constructor, move assignment operator)
     * 类中 没有声明 destructor
     
 * compiler 生成 copy constructor 和 copy assignment operator 也需要上面三个条件
@@ -93,4 +93,16 @@ C++11 中，又添加两个新的，编译器可以自动生成的函数 move co
             ...    // 如前
         private:
             std::map<int, std::string> values;  // 如前
+        };
+* C++11自动生成的 dtor 是 noexcept 的 C++98 中，如果 base 的 dtor 是 virtual 的，那么 derived class 的 dtor 也是 virtual 的。
+* member function template 不会影响 compiler 生成 ctor, dtor, copy operation 和 move operation. 比如
+
+        class Widget {
+            ...
+            template <typename T>  // 可以用任何对象构造Widget
+            Widget(const T& rhs);   
+
+            template <typename T>    // 可以把任何对象赋值给Widget
+            Widget& operator=(const T& rhs);
+            ...`
         };
