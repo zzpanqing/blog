@@ -81,4 +81,16 @@ C++11 中，又添加两个新的，编译器可以自动生成的函数 move co
                 Base& operator(const Base&) = default;
                 ...
             };
-* 如果一个 class 没有使用 default 来 declare dctr, 该类就不会有 move operation, 所有的 move operation 请求，都用 copy operation 来代替。
+* 不使用 default 自定义 dtor 可能会导致性能问题。如果一个 class 没有使用 default 来 declare dctr, 该类就不会有 move operation, 所有的 move operation 请求，都用 copy operation 来代替。而 copy 要比 move 代价大，所以 自定义 dtor 可能游性能问题。比如下面的 class 有一个 map, map 可能很大，copy 时就会有性能问题。
+
+        class StringTable {
+        public:
+            StringTable()
+            { makeLogEntry("Creating StringTable Object"); }  // 新添加
+
+            ~StringTable()
+            { makeLogEntry("Destroying StringTable Object"); }  // 新添加
+            ...    // 如前
+        private:
+            std::map<int, std::string> values;  // 如前
+        };
