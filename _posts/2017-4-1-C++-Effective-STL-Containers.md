@@ -70,4 +70,7 @@
 * copy in copy out, that is the STL way. 每次添加一个元素到 container 中 (insert / push_back), 你添加的是你指定的 object 的一个 copy, 当你从 container 中获取一个元素 (front / back) 你获取的也是 container 中元素的 copy. 所有的元素移动都有 copy 来完成。
 
     * 产生移动的操作 :  
-
+        * insert / erase 到 vector, string, deque
+        * 排序 sorting algorithms
+        * ...
+        
