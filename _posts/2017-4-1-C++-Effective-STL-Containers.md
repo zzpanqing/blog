@@ -87,7 +87,8 @@
           vw.push_back(sw);         // sw is copied as a base class
                                     // object into vw. Its specialness
                                     // is lost during the copying
-         * 解决，使用 container<smart_pointer_Widget*> 
+         
+         * 解决，使用 container<smart_pointer_Widget*> 
          
 * STL 尽量避免不必要的 copy.
 * 生成一个 vector 的时候，vector是空的，随着需求改变大小。
