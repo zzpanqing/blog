@@ -74,3 +74,7 @@
         * 排序 sorting algorithms
         * ...
         
+    * 拷贝元素使用 copy constructor (Widget(const Widget&);) 和 copy assignement operator (Widget& operator=(const Widget&);) compiler 自动生成的 copy operation 做 member wise 拷贝。
+    
+* 如果 copy 代价大，就会出现 performence bottleneck.
+    
