@@ -53,5 +53,5 @@
             map<string, vector<Widget>::iterator, CIStringCompare>::const_iterator;
             
        就不用每次都写这么 map<...> 一堆。
-       
-       * 要进一步的 encapsulation 就要使用类，将实现用的 container 放在类中，encapsule container-specific 的信息
+       
+    * 要进一步的 encapsulation 就要使用类，将实现用的 container 放在类中，encapsule container-specific 的信息
