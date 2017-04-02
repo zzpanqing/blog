@@ -77,7 +77,7 @@
     * 拷贝元素使用 copy constructor (Widget(const Widget&);) 和 copy assignement operator (Widget& operator=(const Widget&);) compiler 自动生成的 copy operation 做 member wise 拷贝。
     
 * 如果 copy 代价大，就会出现 performence bottleneck. 
-    * 继承可能会带来slicing 的问题, 如果声明了一个 base class 的 container, 而向里面添加 derived class 的 objects, 那么这些 objects 的 drivedness 的部分是被去掉的。
+    * 向一个声明了一个 base class 的 container 里面添加 derived class 的 objects, 那么这些 objects 的 drivedness 的部分是被去掉的。
     
           vector<Widget> vw;
           class SpecialWidget:      // SpecialWidget inherits from
