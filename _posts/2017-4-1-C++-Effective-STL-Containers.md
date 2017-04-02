@@ -71,5 +71,5 @@
 
     * 产生移动的操作 :  
         * insert / erase 到 vector, string, deque
-        * 排序 sorting algorithms
-        * ...
+
+        
