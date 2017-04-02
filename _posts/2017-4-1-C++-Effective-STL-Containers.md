@@ -66,5 +66,5 @@
                   //information visible through
                 };//this interface
 
-#Item 3 : Make copying cheap and correct for objects in containers.#你
-* copy in copy out, that is the STL way. 每次添加一个元素到 container 中 (insert / push_back), 
+# Item 3 : Make copying cheap and correct for objects in containers. #
+* copy in copy out, that is the STL way. 每次添加一个元素到 container 中 (insert / push_back), 你添加的是你指定的 object 的一个 copy, 当你从 container 中获取一个元素 (front / back) 你获取的也是 container 中元素的 copy.
