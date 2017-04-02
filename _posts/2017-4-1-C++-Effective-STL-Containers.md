@@ -52,9 +52,9 @@
              typedef MyIterator 
                map<string, vector<Widget>::iterator, CIStringCompare>::const_iterator;
                
-         就不用每次都写这么 map<...> 一堆.         
-    
-     * 要进一步的 encapsulation 就要使用类，将实现用的 container 放在类中，encapsule container-specific 的信息。比如要生成一个 customer list, 你生成一个 CustomerList class, 将 list 放在 CustomerList 的 private 部分。
+         就不用每次都写这么 map<...> 一堆.
+         
+     * 要进一步的 encapsulation 就要使用类，将实现用的 container 放在类中，encapsule container-specific 的信息。比如要生成一个 customer list, 你生成一个 CustomerList class, 将 list 放在 CustomerList 的 private 部分。
      
               class CustomerList {
               private:
