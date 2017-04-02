@@ -39,3 +39,19 @@
               WCIterator i = find(vw.begin(), vw.end(), bestWidget);
 
       如果现在不使用 vector 而换成另外一种 container, WCIterator 也是有效的，不用修改。
+      
+      typedef 还可以用来简化很长的类型。比如 你有一个 map 是这样的：
+      
+          map< string,
+               vector<Widget>::iterator, // CIStringCompare is "case-
+               CIStringCompare>          // insensitive string compare;"
+                                         //Item 19 describes it
+                                         
+       你想要使用该 map 的 const_iterator, 你就可以
+      
+           typedef MyIterator 
+            map<string, vector<Widget>::iterator, CIStringCompare>::const_iterator;
+            
+       就不用每次都写这么 map<...> 一堆。
+       
+       * 要进一步的 encapsulation 就要使用类，将实现用的 container 放在类中，encapsule container-specific 的信息
