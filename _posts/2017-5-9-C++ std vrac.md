@@ -5,3 +5,5 @@
       std::cout << std::fixed << setprecision (1) << 8.0 << std::endl;
       
   std::fixed 浮点数小数点后位数固定
+  
+* std::remove 文件名 删除文件
